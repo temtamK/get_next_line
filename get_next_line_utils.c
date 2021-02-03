@@ -6,11 +6,24 @@
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 18:41:23 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/02 18:46:04 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/02/03 14:59:55 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	*ft_calloc(size_t num, size_t size)
+{
+	char	*new;
+	size_t	i;
+
+	if (!(new = malloc(size * num)))
+		return (NULL);
+	i = 0;
+	while (i < size * num)
+		*(new + i++) = 0;
+	return (new);
+}
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
@@ -41,7 +54,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
+	s_len = 0;
+	while (s[s_len])
+		s_len++;
 	if (start >= s_len)
 		return (ft_calloc(1, sizeof(char)));
 	if (!(new = (char *)malloc(sizeof(char) * len + 1)))
