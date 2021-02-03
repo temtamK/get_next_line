@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 09:39:21 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/03 16:37:38 by taemkim          ###   ########.fr       */
+/*   Created: 2021/02/03 16:42:36 by taemkim           #+#    #+#             */
+/*   Updated: 2021/02/03 16:48:39 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # define BUFFER_SIZE 1
 
 # include <unistd.h>

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 09:31:35 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/03 16:40:04 by taemkim          ###   ########.fr       */
+/*   Created: 2021/02/03 16:44:36 by taemkim           #+#    #+#             */
+/*   Updated: 2021/02/03 16:48:05 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -75,25 +75,25 @@ char	*ft_read(int fd, char *str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*str;
+	static char	*str[4096];
 	char		*temp;
 	char		*temp2;
 
-	if (!line || !(str = ft_read(fd, str)))
+	if (!line || !(str[fd] = ft_read(fd, &str[fd])))
 		return (-1);
-	if ((temp = ft_strchr(str, '\n')))
+	if ((temp = ft_strchr(str[fd], '\n')))
 	{
-		temp2 = str;
-		*line = ft_substr(str, 0, temp - str);
-		str = ft_strdup(str + (temp - str) + 1);
+		temp2 = str[fd];
+		*line = ft_substr(str[fd], 0, temp - str[fd]);
+		str[fd] = ft_strdup(str[fd] + (temp - str[fd]) + 1);
 		free(temp2);
 		return (1);
 	}
 	else
 	{
-		*line = ft_strdup(str);
-		free(str);
-		str = NULL;
+		*line = ft_strdup(str[fd]);
+		free(str[fd]);
+		str[fd] = NULL;
 		return (0);
 	}
 }
