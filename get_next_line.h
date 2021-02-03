@@ -6,13 +6,12 @@
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 09:39:21 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/03 16:37:38 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/02/03 17:05:11 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1
 
 # include <unistd.h>
 # include <stdlib.h>

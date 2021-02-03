@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 09:31:35 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/03 16:40:04 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/02/03 17:02:33 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return (ft_stdup(""));
+		return (ft_strdup(""));
 	if (!(new = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	ft_strlcpy(new, s + start, len + 1);

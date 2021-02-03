@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:44:36 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/03 16:48:05 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/02/03 17:08:14 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return (ft_stdup(""));
+		return (ft_strdup(""));
 	if (!(new = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	ft_strlcpy(new, s + start, len + 1);
 	return (new);
 }
 
-char	*ft_read(int fd, char *str)
+char	*ft_read(int fd, char **str)
 {
 	char	*buf;
 	int		ret;
@@ -56,21 +56,21 @@ char	*ft_read(int fd, char *str)
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (fd < 0 || read(fd, buf, 0) < 0 || BUFFER_SIZE < 1)
 		return (0);
-	if (str == NULL)
-		str = ft_strdup("");
-	while (!(ft_strchr(str, '\n')))
+	if (*str == NULL)
+		*str = ft_strdup("");
+	while (!(ft_strchr(*str, '\n')))
 	{
 		if ((ret = read(fd, buf, BUFFER_SIZE)) < 0)
 			return (0);
 		buf[ret] = '\0';
-		temp = ft_strjoin(str, buf);
-		free(str);
-		str = temp;
+		temp = ft_strjoin(*str, buf);
+		free(*str);
+		*str = temp;
 		if (ret == 0)
 			break ;
 	}
 	free(buf);
-	return (str);
+	return (*str);
 }
 
 int		get_next_line(int fd, char **line)
