@@ -6,12 +6,20 @@
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:42:36 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/03 17:09:35 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:42:29 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>

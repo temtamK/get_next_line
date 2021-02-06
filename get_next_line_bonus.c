@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:44:36 by taemkim           #+#    #+#             */
-/*   Updated: 2021/02/03 17:08:14 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:37:39 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ char	*ft_read(int fd, char **str)
 	char	*temp;
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (fd < 0 || read(fd, buf, 0) < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > OPEN_MAX || read(fd, buf, 0) < 0 || BUFFER_SIZE < 1)
+	{
+		free(buf);
 		return (0);
+	}
 	if (*str == NULL)
 		*str = ft_strdup("");
 	while (!(ft_strchr(*str, '\n')))
@@ -75,7 +78,7 @@ char	*ft_read(int fd, char **str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*str[4096];
+	static char	*str[1024];
 	char		*temp;
 	char		*temp2;
 
